@@ -6,27 +6,34 @@ data class Question<T>(
 enum class Difficulty {
     EASY, MEDIUM, HARD
 }
-fun main() {
+
+class Quiz {
     val question1 = Question<String>(
         questionText = "Речка спятила с ума – По домам пошла сама. ___",
         answer = "водопровод",
-        Difficulty.MEDIUM
+        difficulty = Difficulty.MEDIUM
     )
 
     val question2 = Question<Boolean>(
         questionText = "Небо зелёное. Правда или ложь",
         answer = false,
-        Difficulty.EASY
+        difficulty = Difficulty.EASY
     )
 
     val question3 = Question<Int>(
         questionText = "Сколько дней между полнолуниями?",
         answer = 28,
-        Difficulty.HARD
+        difficulty = Difficulty.HARD
     )
-    println(question1.toString())
+    companion object StudentProgress {
+        var total: Int = 0
+        var answered: Int = 0
+    }
+}
 
-    println(question1.answer)
-    println(question2.answer)
-    println(question3.answer)
+fun main() {
+
+    Quiz.total = 3
+    Quiz.answered = 2
+    println("${Quiz.answered} of ${Quiz.total} answered")
 }
