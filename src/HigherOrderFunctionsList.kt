@@ -86,9 +86,16 @@ val cookies = listOf(
 //        println("${it.name} - $${it.price}")
 //    }
 //}
+//fun main() {
+//    val totalPrice = cookies.fold(0.0) { total, cookie ->
+//        total + cookie.price
+//    }
+//    println("Total price: $${totalPrice}")
+//}
 fun main() {
-    val totalPrice = cookies.fold(0.0) { total, cookie ->
-        total + cookie.price
+    val alphabeticalMenu = cookies.sortedBy { it.name }
+    println("Меню в алфавитном порядке:")
+    alphabeticalMenu.forEach {
+        println(it.name)
     }
-    println("Total price: $${totalPrice}")
 }
