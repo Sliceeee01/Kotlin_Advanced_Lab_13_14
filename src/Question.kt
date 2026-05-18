@@ -1,11 +1,12 @@
+enum class Difficulty {
+    EASY, MEDIUM, HARD
+}
+
 data class Question<T>(
     val questionText: String,
     val answer: T,
     val difficulty: Difficulty
 )
-enum class Difficulty {
-    EASY, MEDIUM, HARD
-}
 
 class Quiz {
     val question1 = Question<String>(
@@ -25,15 +26,25 @@ class Quiz {
         answer = 28,
         difficulty = Difficulty.HARD
     )
+
     companion object StudentProgress {
         var total: Int = 0
         var answered: Int = 0
     }
 }
 
-fun main() {
+val Quiz.StudentProgress.progressText: String
+    get() = "${answered} of ${total} answered"
 
-    Quiz.total = 3
-    Quiz.answered = 2
-    println("${Quiz.answered} of ${Quiz.total} answered")
+fun Quiz.StudentProgress.printProgressBar() {
+    repeat(times = Quiz.answered) { print("█") }
+    repeat(times = Quiz.total - Quiz.answered) { print("░") }
+    println()
+    println(Quiz.progressText)
+}
+
+fun main() {
+    Quiz.total = 10
+    Quiz.answered = 3
+    Quiz.printProgressBar()
 }
