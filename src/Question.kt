@@ -1,7 +1,7 @@
-class Question<T>(
+data class Question<T>(
     val questionText: String,
     val answer: T,
-    val difficulty: Difficutly
+    val difficulty: Difficulty
 )
 enum class Difficulty {
     EASY, MEDIUM, HARD
@@ -24,6 +24,7 @@ fun main() {
         answer = 28,
         Difficulty.HARD
     )
+    println(question1.toString())
 
     println(question1.answer)
     println(question2.answer)
